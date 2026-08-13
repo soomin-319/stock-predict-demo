@@ -1,0 +1,74 @@
+{
+  "meta": {
+    "schema_version": "1.0.0",
+    "generated_at": "2026-01-02T09:00:00+09:00",
+    "synthetic": true,
+    "disclaimer": "Research demo only. Not investment advice."
+  },
+  "policy": {
+    "buy_threshold": 0.01,
+    "sell_threshold": -0.01,
+    "news_impact_return_adjustment_enabled": true,
+    "news_impact_return_adjustment_cap": 0.005
+  },
+  "market": [
+    {
+      "name": "DEMO Composite",
+      "level": 2480.12,
+      "change_rate": 0.0064
+    },
+    {
+      "name": "DEMO Growth",
+      "level": 812.45,
+      "change_rate": -0.0031
+    },
+    {
+      "name": "DEMO Volatility",
+      "level": 19.8,
+      "change_rate": 0.0
+    }
+  ],
+  "predictions": [
+    {
+      "symbol": "DEMO-A",
+      "name": "가상 기업 A",
+      "predicted_return_model": 0.011,
+      "news_adjustment": 0.0035,
+      "predicted_return": 0.0145,
+      "recommendation": "BUY"
+    },
+    {
+      "symbol": "DEMO-B",
+      "name": "가상 기업 B",
+      "predicted_return_model": 0.003,
+      "news_adjustment": -0.001,
+      "predicted_return": 0.002,
+      "recommendation": "HOLD"
+    },
+    {
+      "symbol": "DEMO-C",
+      "name": "가상 기업 C",
+      "predicted_return_model": -0.008,
+      "news_adjustment": -0.0045,
+      "predicted_return": -0.0125,
+      "recommendation": "SELL"
+    }
+  ],
+  "news_context": [
+    {
+      "symbol": "DEMO-A",
+      "source": "synthetic",
+      "title": "가상 기업 A, 신규 연구 계획 발표"
+    },
+    {
+      "symbol": "DEMO-B",
+      "source": "synthetic",
+      "title": "가상 기업 B, 분기 운영 계획 유지"
+    },
+    {
+      "symbol": "DEMO-C",
+      "source": "synthetic",
+      "title": "가상 기업 C, 공급 일정 지연 공지"
+    }
+  ]
+}

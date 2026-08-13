@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; style-src 'self'; script-src 'self'; connect-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'"
+    />
+    <meta name="description" content="합성 데이터 기반 주가 예측 연구 화면 데모" />
+    <title>Stock Predict Demo</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="hero">
+      <div>
+        <p class="eyebrow">PUBLIC · SYNTHETIC DATA</p>
+        <h1>Stock Predict Demo</h1>
+        <p class="hero-copy">비공개 예측 코어의 출력 계약을 보여주는 읽기 전용 연구 데모</p>
+      </div>
+      <span class="status" id="load-status" role="status" aria-live="polite">데이터 로딩 중</span>
+    </header>
+
+    <main>
+      <aside class="notice" aria-label="중요 안내">
+        <strong>연구용 합성 데이터</strong>
+        <span>실제 종목·시장 데이터가 아니며 투자 조언 또는 자동매매 신호가 아닙니다.</span>
+      </aside>
+
+      <section aria-labelledby="market-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">MARKET SNAPSHOT</p>
+            <h2 id="market-title">가상 시장</h2>
+          </div>
+          <time id="generated-at"></time>
+        </div>
+        <div class="card-grid" id="market-cards"></div>
+      </section>
+
+      <section aria-labelledby="prediction-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">NEXT-DAY EXPECTED RETURN</p>
+            <h2 id="prediction-title">예측 출력 예시</h2>
+          </div>
+          <p id="policy-summary"></p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">가상 종목</th>
+                <th scope="col">최종 예상수익률</th>
+                <th scope="col">모델 원본</th>
+                <th scope="col">조정 성분</th>
+                <th scope="col">연구 신호</th>
+              </tr>
+            </thead>
+            <tbody id="prediction-rows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section aria-labelledby="context-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">REVIEW CONTEXT</p>
+            <h2 id="context-title">합성 뉴스 문맥</h2>
+          </div>
+          <p>모델 feature matrix 제외</p>
+        </div>
+        <ul class="context-list" id="context-list"></ul>
+      </section>
+    </main>
+
+    <footer>
+      <span>Core private · Demo public</span>
+      <a href="https://github.com/soomin-319/stock-predict-demo">GitHub repository</a>
+    </footer>
+  </body>
+</html>
