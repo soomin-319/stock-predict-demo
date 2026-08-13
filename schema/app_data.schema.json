@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/soomin-319/stock-predict-demo/schema/app_data.schema.json",
+  "title": "Stock Predict Demo App Data",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["meta", "policy", "market", "predictions", "news_context"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "generated_at", "synthetic", "disclaimer"],
+      "properties": {
+        "schema_version": { "type": "string", "const": "1.0.0" },
+        "generated_at": { "type": "string", "format": "date-time" },
+        "synthetic": { "type": "boolean", "const": true },
+        "disclaimer": { "type": "string", "minLength": 1 }
+      }
+    },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "buy_threshold",
+        "sell_threshold",
+        "news_impact_return_adjustment_enabled",
+        "news_impact_return_adjustment_cap"
+      ],
+      "properties": {
+        "buy_threshold": { "type": "number" },
+        "sell_threshold": { "type": "number" },
+        "news_impact_return_adjustment_enabled": { "type": "boolean" },
+        "news_impact_return_adjustment_cap": { "type": "number", "minimum": 0 }
+      }
+    },
+    "market": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "level", "change_rate"],
+        "properties": {
+          "name": { "type": "string", "pattern": "^DEMO" },
+          "level": { "type": "number" },
+          "change_rate": { "type": "number" }
+        }
+      }
+    },
+    "predictions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "symbol",
+          "name",
+          "predicted_return_model",
+          "news_adjustment",
+          "predicted_return",
+          "recommendation"
+        ],
+        "properties": {
+          "symbol": { "type": "string", "pattern": "^DEMO-" },
+          "name": { "type": "string", "pattern": "^가상" },
+          "predicted_return_model": { "type": "number" },
+          "news_adjustment": { "type": "number" },
+          "predicted_return": { "type": "number" },
+          "recommendation": { "enum": ["BUY", "HOLD", "SELL"] }
+        }
+      }
+    },
+    "news_context": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["symbol", "source", "title"],
+        "properties": {
+          "symbol": { "type": "string", "pattern": "^DEMO-" },
+          "source": { "type": "string", "const": "synthetic" },
+          "title": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}
